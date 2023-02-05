@@ -1,0 +1,26 @@
+name: veriff_flutter
+description: Flutter plugin for Veriff SDK. It allows you to integrate ID verification solution provided by Veriff into your application.
+version: 2.2.0-fork
+homepage: https://www.veriff.com/
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=2.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.veriff.veriff_flutter
+        pluginClass: VeriffFlutterPlugin
+      ios:
+        pluginClass: VeriffFlutterPlugin
+

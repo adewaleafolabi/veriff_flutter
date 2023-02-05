@@ -1,0 +1,7 @@
+git_url("git@github.com:Veriff/ios-certificates.git")
+git_branch("master")
+#clone_branch_directly(true)
+storage_mode("git")
+type("appstore") # The default type, can be: appstore, adhoc, enterprise or development
+app_identifier("com.veriff.flutter")
+username("mobile@veriff.net")

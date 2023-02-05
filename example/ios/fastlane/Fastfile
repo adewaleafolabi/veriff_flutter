@@ -1,0 +1,53 @@
+default_platform :ios
+skip_docs
+
+before_all do
+  setup_circle_ci
+  ENV["SLACK_URL_end-user-ios-builds"] = "https://hooks.slack.com/services/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"
+end
+
+SIMULATOR_VER = "iPhone 8 (14.5)"
+
+desc "Download signing certificates"
+lane:download_certificates do |options|
+  match(type: "appstore", readonly: true)
+end
+
+desc "Run plugin tests"
+lane:tests do |options|
+  test_args = {
+        scheme: "veriff_flutter_exampleTests",
+        devices: [ SIMULATOR_VER ],
+        clean: true,
+  }
+  scan(test_args)
+end
+
+desc "Push build to TestFlight"
+lane :beta do |options|
+  increment_build_number(
+    build_number: options[:build_number]
+  )
+  download_certificates
+  gym(scheme: "Runner", export_method: "app-store")
+  pilot(api_key_path: "./#{options[:api_key_id]}.json", skip_waiting_for_build_processing: true)
+  build_report_to_slack(build_number: options[:build_number], build_url: options[:build_url])
+end
+
+desc "Sends build report to defined slack channel"
+lane :build_report_to_slack do |options|
+  if is_ci?
+    slack(
+      message: "*Flutter Test application*`[#{options[:build_number]}]` * will be available on Test Flight soon!*:rocket:",
+      success: true,
+      slack_url: ENV["SLACK_URL_end-user-ios-builds"],
+      payload: {
+        "Build Date" => Time.new.to_s,
+        "Job ID" => options[:build_number],
+        "Build link" => options[:build_url],
+      }
+    )
+  else
+    puts "Skipping Slack build message since we are not running on CI."
+  end
+end

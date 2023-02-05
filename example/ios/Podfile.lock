@@ -1,0 +1,43 @@
+PODS:
+  - barcode_scan (0.0.1):
+    - Flutter
+    - MTBBarcodeScanner
+    - SwiftProtobuf
+  - Flutter (1.0.0)
+  - MTBBarcodeScanner (5.0.11)
+  - SwiftProtobuf (1.19.0)
+  - veriff_flutter (0.0.1):
+    - Flutter
+    - VeriffSDK (>= 4.18.0)
+  - VeriffSDK (4.35.0)
+
+DEPENDENCIES:
+  - barcode_scan (from `.symlinks/plugins/barcode_scan/ios`)
+  - Flutter (from `Flutter`)
+  - veriff_flutter (from `.symlinks/plugins/veriff_flutter/ios`)
+
+SPEC REPOS:
+  trunk:
+    - MTBBarcodeScanner
+    - SwiftProtobuf
+    - VeriffSDK
+
+EXTERNAL SOURCES:
+  barcode_scan:
+    :path: ".symlinks/plugins/barcode_scan/ios"
+  Flutter:
+    :path: Flutter
+  veriff_flutter:
+    :path: ".symlinks/plugins/veriff_flutter/ios"
+
+SPEC CHECKSUMS:
+  barcode_scan: a5c27959edfafaa0c771905bad0b29d6d39e4479
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
+  SwiftProtobuf: 6ef3f0e422ef90d6605ca20b21a94f6c1324d6b3
+  veriff_flutter: dcd1065c276c2b3af83c067e757f006cf9085f8e
+  VeriffSDK: 85174790570b0e296f80f3e1c8cb220e99f65e26
+
+PODFILE CHECKSUM: 1a7e02b6fbe4b2432ba27ef4131e49a3a8161780
+
+COCOAPODS: 1.11.2
